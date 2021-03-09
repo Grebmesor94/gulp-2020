@@ -46,6 +46,8 @@ SASS
 
 purgar/limpiar CSS
     npm install --save-dev gulp-purgecss
+    
+    para usarlo usamos .pipe(cachebust({type: 'timestamp'}) en pug o html-min
 
 Limpiar caché
     npm install --save-dev gulp-cache-bust
