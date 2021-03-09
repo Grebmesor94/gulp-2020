@@ -71,3 +71,4 @@ Browser Sync
 
 Gulp Plumber
     npm install --save-dev gulp-plumber
+    para usar plumber se coloca luego de src en todas las tareas.
