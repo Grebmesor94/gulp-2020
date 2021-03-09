@@ -27,14 +27,16 @@ Transpilar JavaScript
 HTML
     npm install --save gulp-htmlmin
     Minifica y limpia nuestro HTML
-    https://github.com/kangax/html-minifier
+    https://github.com/kangax/html-minifier (aqui puedes ver todas las opciones) yo uso collapsiblewhitespace y removecomments
+    
 
 CSS
     npm install --save-dev gulp-postcss cssnano autoprefixer
-
-
+    postcss = .pipe(postcss(cssplugins))
+    cssnano y autoprefixer se usan como plugins para postcss... const cssPlugins = [ cssnano(), autoprefixer()]
+    
     Para utilizar autoprefixer hay dos opciones, o añadir los navegadores a los que quieres dar soporte al package.json o hacerlo en un archivo separado.
-    .browserslistrc
+    .browserslistrc 
 
     postCSS: https://github.com/postcss/postcss/blob/master/docs/plugins.md
 
@@ -43,20 +45,29 @@ PUG
     
 SASS
     npm install --save-dev gulp-sass
+    .pipe(sass({outputStyle: 'compressed'}) opcion de node.sass
+    
+    usar postcss luego de sass
 
 purgar/limpiar CSS
-    npm install --save-dev gulp-purgecss
-    
-    para usarlo usamos .pipe(cachebust({type: 'timestamp'}) en pug o html-min
+    npm install --save-dev gulp-purgecss 
+    se usa el archivo final styles.css (carpeta public)
+    .pipe(purgecss({content: ['./public/*.html']}))
 
 Limpiar caché
     npm install --save-dev gulp-cache-bust
-
+    para usarlo usamos .pipe(cachebust({type: 'timestamp'}) en pug o html-min
+    
 Comprimir imágenes
     npm install --save-dev gulp-imagemin
-
+    .pipe(purgecss({content: ['./public/*.html']}))
+    
 Browser Sync
     npm install --save-dev browser-sync
+    import {init, stream, reload}
+    init: se usa como funcion en default init({server: './public'})
+    stream: se usa al final del sass o css .pipe(stream())
+    reload: se usa en el watch de babel y pug/ html-min = .on('change', reload)
 
 Gulp Plumber
     npm install --save-dev gulp-plumber
